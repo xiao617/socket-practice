@@ -23,13 +23,13 @@ const startFastify: (port: number) => FastifyInstance<Server, IncomingMessage, S
     server.register(fastifyIO,{});
     server.register(SocketRouter);
 
-    server.ready().then(() => {
-        server.io.on("connection",(socket) => {
-            console.log(socket);
-            socket.emit("hello","world");
-        })
-        //server.io.
-    });
+    // server.ready().then(() => {
+    //     server.io.on("connection",(socket) => {
+    //         console.log(socket);
+    //         socket.emit("hello","world");
+    //     })
+    //     //server.io.
+    // });
     // server.ready(err => {
     //     if(err)
     //     {

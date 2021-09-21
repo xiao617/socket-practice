@@ -19,6 +19,7 @@
     "mongodb": "^3.6.10",
     "mongoose": "^5.13.3",
     "pino-pretty": "^7.0.0",
+    "rate-limiter-flexible": "^2.2.4",
     "socket.io": "^4.2.0",
     "ts-node": "^10.2.1"
   },

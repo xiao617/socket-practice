@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.circle {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  border-radius: 50%;
+}
