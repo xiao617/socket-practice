@@ -1,7 +1,9 @@
 import react,{useEffect,useState} from 'react'
+import {List,Input, Button,Row,Col} from 'antd';
+import "antd/dist/antd.css";
+import "./../index.css";
 import {io} from "socket.io-client";
-import './../index.css';
-import {List,Input, Button} from 'antd';
+
 import { ChatObject } from '../types/typeObjects';
 export default function SocketChat()
 {
@@ -11,6 +13,20 @@ export default function SocketChat()
     const [inputMsg,setInputMsg] = useState<string>("");
     const [userID, setUserID] = useState<string>("");
     const [prevMsg,setPrevMsg] = useState<ChatObject>({userId: "",msg:"",time:""})
+    const data = [
+        "Racing car",
+        "Japanese princess",
+        "Racing car",
+        "Japanese princess",
+        "Racing car",
+        "Japanese princess",
+        "Racing car",
+        "Japanese princess",
+        "Racing car",
+        "Japanese princess",
+        "Racing car",
+        "Japanese princess"
+      ];
     useEffect(()=>{
         const getID = getRandomKey(8);
         setUserID(getID);
@@ -38,7 +54,7 @@ export default function SocketChat()
     function submitMsg(){
         
         socket.volatile.emit("c1r",{userId: userID,msg:inputMsg,time:Date().toLocaleString()});
-    
+        setInputMsg("");
         
         
     }
@@ -53,18 +69,22 @@ export default function SocketChat()
         //}
     }
     return (
-    <div>
-        <List dataSource={chatHistory} renderItem={
-            (item) =>(
-                <List.Item>
-                    {item.msg}
-                </List.Item>
-            )
-        }>
-
-        </List>
-        <Input value={inputMsg} onChange={(e)=>setInputMsg(e.target.value)} ></Input>
+        <div>
+            <div className="ChatView" >
+            <List pagination={{
+      pageSize: 5,
+    }} bordered dataSource={chatHistory} renderItem={
+                (item) =>(
+                    <List.Item>
+                        {item.msg}
+                    </List.Item>
+                )
+            } />
+        </div>
+       <Input value={inputMsg} onChange={(e)=>setInputMsg(e.target.value)} ></Input>
         <Button onClick={submitMsg}>submit</Button>
+        
+        
     </div>
     );
 }

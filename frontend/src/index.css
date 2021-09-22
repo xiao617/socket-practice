@@ -19,3 +19,6 @@ code {
   background-color: green;
   border-radius: 50%;
 }
+.ChatView{
+  height: 400px;
+}

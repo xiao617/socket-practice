@@ -16,7 +16,7 @@ const SocketRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done
             //socket.join("room1");
             // socket.to("room1").emit('c1r',"Hi room1");
             // server.io.to("room1").emit("c1r","hoho");
-            console.log("connect client");
+            //console.log("connect client");
             socket.on("c1r",(msg)=>{
                 try{
                     rateLimiter.consume(socket.handshake.address);
@@ -29,7 +29,7 @@ const SocketRouter = (server: FastifyInstance, opts: RouteShorthandOptions, done
                 
             })
             socket.on("disconnect",(r)=>{
-                console.log("disconnect client");
+                //console.log("disconnect client");
             })
             socket.on("error",(err)=>{
                 socket.disconnect();
